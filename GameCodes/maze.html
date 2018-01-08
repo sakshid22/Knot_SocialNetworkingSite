@@ -1,0 +1,213 @@
+<html>
+<head>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original:  Steven Weinberger (weinberg@yu1.yu.edu) -->
+
+
+
+<!-- Begin
+var line = "";
+var x = 0;
+var y = 0;
+var full="*";
+var blank = "_";
+var wall = "[]";
+var goal = "$";
+
+var fill = "";
+
+function makeboard() {
+for (var i=1; i<= 10; i++) this[i] = new makeRow();
+return this;
+}
+
+function makeRow() {
+for (var i=1; i<= 10; i++) this[i]=blank;
+return this;
+}
+
+function clearBoard (form) {
+x = 0;
+y = 0;
+form.xval.value = 1;
+form.yval.value = 1;
+for (var i=1; i<= 10; i++)
+for (var j=1; j<= 10; j++)
+theBoard[i][j]=blank;
+drawMaze();
+fillBoard(form);
+return;
+}
+function fillBoard (form) {
+line = "";
+form.grid.value = "";
+for (var i=1; i<= 10; i++)
+for (var j=1; j<= 10; j++)
+line += theBoard[i][j];
+form.grid.value=line;
+}
+function plot (v, h) {
+theBoard[v][h] = fill;
+}
+function drawMaze() {
+theBoard[10][10] = goal;
+theBoard[1][2] = wall;
+theBoard[2][2] = wall;
+theBoard[4][1] = wall;
+theBoard[4][2] = wall;
+theBoard[4][3] = wall;
+theBoard[2][3] = wall;
+theBoard[5][2] = wall;
+theBoard[6][2] = wall;
+theBoard[2][5] = wall;
+theBoard[4][5] = wall;
+theBoard[5][5] = wall;
+theBoard[2][6] = wall;
+theBoard[2][7] = wall;
+theBoard[9][10] = wall;
+theBoard[9][9] = wall;
+theBoard[8][9] = wall;
+theBoard[7][9] = wall;
+theBoard[10][7] = wall;
+theBoard[9][7] = wall;
+theBoard[8][7] = wall;
+theBoard[6][7] = wall;
+theBoard[9][2] = wall;
+theBoard[9][3] = wall;
+theBoard[9][4] = wall;
+theBoard[8][2] = wall;
+theBoard[7][4] = wall;
+theBoard[7][5] = wall;
+theBoard[6][5] = wall;
+theBoard[5][7] = wall;
+theBoard[5][8] = wall;
+theBoard[5][9] = wall;
+theBoard[4][9] = wall;
+}
+function update(form) {
+var horiz = eval(form.xval.value);
+var vert = eval(form.yval.value);
+plot(vert,horiz);
+fillBoard(form);
+return;
+}
+function initBoard() {
+theBoard = new makeboard();
+fill = full;
+clearBoard(document.board);
+update(document.board);
+}
+function decx(form) {
+fill = blank;
+update(form);
+checkx = eval(form.xval.value - 1);
+checky = form.yval.value;
+if (form.xval.value > 1) {
+if (theBoard[checky][checkx] != wall) {
+form.xval.value=eval(form.xval.value - 1);
+}
+else {
+alert("THUD!\nYou hit a wall.");
+}
+if (theBoard[checky][checkx] == goal) {
+alert("YOU WIN!");
+   }
+}
+fill = full;
+update(form);
+}
+function incx(form) {
+fill = blank;
+update(form);
+checkx = eval(1 * form.xval.value + 1);
+checky = form.yval.value;
+if (form.xval.value < 10) {
+if (theBoard[checky][checkx] != wall) {
+form.xval.value=eval(1 * form.xval.value + 1);
+}
+else {
+alert("THUD!\nYou hit a wall.");
+}
+if (theBoard[checky][checkx] == goal) {
+alert("YOU WIN!");
+   }
+}
+fill = full;
+update(form);
+}
+function decy(form) {
+fill = blank;
+
+update(form);
+checkx = form.xval.value;
+
+checky = eval(form.yval.value - 1);
+if (form.yval.value > 1) {
+if (theBoard[checky][checkx] != wall) {
+form.yval.value=eval(form.yval.value - 1);
+}
+else {
+alert("THUD!\nYou hit a wall.");
+}
+if (theBoard[checky][checkx] == goal) {
+alert("YOU WIN!");
+   }
+}
+fill = full;
+update(form);
+}
+function incy(form) {
+fill = blank;
+update(form);
+checkx = form.xval.value;
+checky = eval(1 * form.yval.value + 1);
+if (form.yval.value < 10) {
+if (theBoard[checky][checkx] != wall) {
+form.yval.value=eval(1 * form.yval.value + 1);
+}
+else {
+alert("THUD!\nYou hit a wall.");
+}
+if (theBoard[checky][checkx] == goal) {
+alert("YOU WIN!");
+   }
+}
+fill = full;
+update(form);
+}
+function cheater (form) {
+alert("You can't change this value manually.\nPlease use the buttons.");
+clearBoard(form);
+update(form);
+}
+//  End -->
+</script>
+
+</head>
+<body>
+<!-- STEP TWO: Insert the onLoad event handler into your BODY tag  -->
+
+<BODY OnLoad="initBoard()">
+
+<!-- STEP THREE: Copy this code into the BODY of your HTML document  -->
+
+<center>
+<form method="post" name="board">
+<input type='button' value='Reset' onClick='clearBoard(this.form);update(document.board);'>
+<br>
+<textarea name="grid" rows="10" cols="10" wrap=virtual></textarea><br>
+<table>
+<tr>
+<td><input type='button' value='UP' onClick='decy(this.form)'></td>
+<td><input type='text' value='1' size=5 name='yval' onChange='cheater(this.form);'></td>
+<td><input type='button' value='DOWN' onClick='incy(this.form)'></td>
+<tr>
+<td><input type='button' value='LEFT' onClick='decx(this.form)'></td>
+<td><input type='text' value='1' size=5 name='xval' onChange='cheater(this.form);'></td>
+<td><input type='button' value='RIGHT' onClick='incx(this.form)'></td>
+</table>
+</form>
+</center>
+</body>
+</html>
