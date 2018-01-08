@@ -1,0 +1,72 @@
+<html>
+    <head>
+    <style>
+     #d1{background-color:556699;font-size:70px;color:red;text-shadow:4px 4px 4px black;}
+  /*  #d1:hover{ 
+               color:green;
+              -webkit-animation-name:ani23;
+             -webkit-animation-duration:2s;
+            }
+          @-webkit-keyframes ani23
+            {
+             10%{transform:rotate(360deg);}
+}*/
+   #d2{background-color:yellow;color:blue;font-weight:bold;font-style:italic;}
+#d3{float:left}
+    #d3 a:link{background-color:maroon;color:white;font-size:20px;margin-left:100px;text-decoration:none;border-radius:20px;}
+#d3 a:visited{background-color:maroon;color:yellow;font-size:20px;margin-left:100px;text-decoration:none;border:20px}
+       
+#d3 a:hover{background-color:green;
+                -webkit-animation-name:ani;
+                 -webkit-animation-duration:3s;}
+        @-webkit-keyframes ani
+         {
+            20%{transform:translate(0px,30px);}
+            
+         }
+/*#lg{left-margin:500px;background-color:blue;
+               margin-left:1000px;
+             }
+  */
+    #lg a:link{background-color:blue;color:white;font-size:20px;margin-left:100px;text-decoration:none;border:20px}
+     #lg a:visited{background-color:blue;color:white;font-size:20px;margin-left:100px;text-decoration:none;border:20px}
+    /* #lg a:hover{background-color:green;
+                -webkit-animation-name:ani;
+                 -webkit-animation-duration:4s;}
+        @-webkit-keyframes ani
+         {
+            20%{transform:translate(0px,30px);}
+         }*/
+    h1{background:-webkit-linear-gradient(white,violet);color:green;}
+    form{background:-webkit-linear-gradient(black,violet);color:green;height:500px;font-weight:bold}
+    input{background-color:white;border-radius:30px;box-shadow:5px 5px 5px green;}
+    </style>
+         <script language="javascript">
+         
+         </script>
+     </head>
+     <body>
+<center>
+   <div id=d1> MAKING.COM</div>
+</center>
+
+   <div id=d2><marquee>Welcome to Making.com. Here we will teach you how to make a Website</div>
+</marquee>
+<div id=d3>
+                                                                                                                                                                                                                                                                                                            
+       <a href=home.html>Home</a>
+       <a href=About_us.html>About Us</a>
+       <a href=services.html>Services</a>
+       <a href=Faculties.html>Faculties</a> 
+       <a href=contact.html>Contact</a>
+</div>
+ 
+<div id=lg>
+       
+       <a href="login.php">login</a>
+        <a href="signup.php">signup</a>
+  </div>
+    
+      
+       </body>
+   </html>
